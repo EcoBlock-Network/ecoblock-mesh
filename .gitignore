@@ -1,0 +1,10 @@
+/target
+**/*.rs.bk
+/.idea
+.vscode/
+*.swp
+*.log
+*.tmp
+test_tangle.json
+.DS_Store
+Thumbs.db
