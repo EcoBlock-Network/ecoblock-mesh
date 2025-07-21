@@ -1,7 +1,7 @@
 use std::collections::{HashMap, BinaryHeap};
 use std::cmp::Ordering;
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Clone)]
 pub struct TopologyGraph {
     pub connections: HashMap<String, Vec<(String, f32)>>,
 }
@@ -22,6 +22,10 @@ impl TopologyGraph {
 
     pub fn get_neighbors(&self, id: &str) -> Option<Vec<(String, f32)>> {
         self.connections.get(id).cloned()
+    }
+
+    pub fn add_node(&mut self, id: &str) {
+        self.connections.entry(id.to_string()).or_insert_with(Vec::new);
     }
 
     pub fn remove_node(&mut self, id: &str) {
